@@ -1,0 +1,22 @@
+AddDefaultCharset UTF-8
+
+php_value error_reporting 7
+php_value register_globals on
+#php_value memory_limit 256M
+
+RewriteEngine on
+
+
+#RewriteRule ^image/(.*)\.jpg  admin/trf.php?id[0]=$1&t=nrfl&f=flim [L]
+RewriteRule ^image/(.*)\.jpg  admin/media/$1 [L]
+RewriteRule ^file/(.*)\.doc$  admin/trf.php?id[0]=$1&t=nrfl&f=flim [L]
+
+RewriteRule ^uploads/(.*)\.jpg admin/uploads/$1 [L]
+
+
+RewriteRule ^$ /index.php [L] 
+
+
+RewriteCond $1 !^(index\.php|image|swfupload|images|products_pictures|streber|download|admin|css|js|robots\.txt|favicon\.ico|trf\.php|img|google68d05c46cc22900d\.html) 
+
+RewriteRule ^(.*)$ /index.php/$1 [L] 

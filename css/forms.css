@@ -1,0 +1,9 @@
+.poleobkzap{font-size:12px;}
+td.required{margin:0;padding:0;}
+.report_form{text-align:center;}
+td.button, th.button{
+	text-align:right;
+	padding:0;
+}
+.report_yes{color:#01b40e;font-weight: bold; font-size:24px;}
+.report_no{color:#e71217;font-weight: bold; font-size:24px;}

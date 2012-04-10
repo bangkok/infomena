@@ -1,0 +1,17 @@
+.art input[type="checkbox"],
+.art input[type="radio"]{
+margin:0;padding:0;
+/*opacity:0;*/
+/*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);*/
+vertical-align:middle;
+cursor:pointer;
+margin-right:2px;
+}
+.checkboxOn {
+text-align: left;
+background:url(/images/radio_bga.png) no-repeat 0 2px;
+}
+.checkboxOff {
+text-align: left;
+background:url(/images/radio_bg.png) no-repeat 0 2px;
+}

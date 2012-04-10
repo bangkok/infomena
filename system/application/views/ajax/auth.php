@@ -1,0 +1,1 @@
+<?$this->load->view('block/auth.inc.php');?>
