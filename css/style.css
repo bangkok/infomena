@@ -3,6 +3,8 @@ p {text-align:justify;}
 form {margin:0px;padding:0px;}
 input {font-size:12px;}
 a {color:#6172ba;text-decoration:underline;}
+a.nostyle{color:inherit; text-decoration:none;}
+a.hoverline:hover{text-decoration:underline;}
 h1 {font-size:14px;color:#6172ba;}
 h1.red {color:red;}
 img{border:0}

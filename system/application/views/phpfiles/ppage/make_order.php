@@ -17,7 +17,12 @@
 <form  id="check" name="check" method="POST" >
 <table>
 <tr><td>Плательщик:</td><td><input type="text" name="name" size="50" value="<?if(isset($Cat->nickname)){?><?=$Cat->nickname?><?}?>" onkeyup="checkusernickname(this.value)"> <span id="checknickname"></span></td></tr>
-<tr><td>Назначение:</td><td><div id="asgmt"><input type="text" size="50" name="asgmt" value="<?if(isset($Cat->title)){?><?=$Cat->title?><?}?>"></div></td></tr>
+<tr><td>Назначение:</td><td>
+	<div id="asgmt">
+		<input type="text" size="50" name="asgmt" value="<?if(isset($Cat->title)){?><?=$Cat->title?><?}?>">
+		<?if(isset($Cat->title)){?><a href="/ppage/my_bussines/one_<?=$Cat->type?>/<?=$Cat->id?>">подробнее</a><?}?>
+	</div>
+</td></tr>
 <tr><td>Примечания</td><td><textarea name="desc" cols="35"><?if(isset($Order->desc)){?><?=$Order->desc?><?}?></textarea></td></tr>
 </table>
 

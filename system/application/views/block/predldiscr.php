@@ -35,5 +35,5 @@
 				<a href="/ppage/my_bussines/one_predl/<?=$id?>" class="mainopis" title="<?=$this->fields['desc']?>" ><?=$this->fields['desc']?></a>
 		</div>
 	</span>
-	<span style="font-size:14px;"><b><?=$title?></b></span>
+	<span style="font-size:14px;"><b><a class="nostyle" href="/ppage/my_bussines/one_predl/<?=$id?>"><?=$title?></a></b></span>
 </div>

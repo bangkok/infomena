@@ -105,6 +105,41 @@ class Checks_model extends Model
 		$query = $this->db->get($this->table);
 		return $query->result();		
 	}
+
+	function getUserTransactions($user_id){
+		$table = $this->table_operation;
+		$u_table = $this->auth_model->getval('table');
+		$u_id = $this->auth_model->getval('id');
+		$u_nickname = $this->auth_model->getval('nickname');
+		$table_catalog = $this->catalog_model->getval('table_catalog');
+
+
+		$this->db->select("$table.*");
+		$this->db->select("date_format($table.ad, '%d.%m.%Y') AS date",FALSE);
+
+		$this->db->select("$u_table.$u_nickname AS nickname, $u_table.$u_id as user_id");
+		$this->db->join($u_table, "
+			($u_table.$u_id  = $table.id_user_from AND $table.id_user_from != $user_id) OR
+			($u_table.$u_id  = $table.id_user_to AND $table.id_user_to != $user_id) ", "LEFT");
+		$this->db->select("CASE $table.id_user_to WHEN $user_id THEN
+			$table.info + $table.comis ELSE
+			-($table.info + $table.comis) END AS income");
+
+		$this->db->select("$this->table.id as order_id");
+		$this->db->join($this->table, "$this->table.id = $table.id_check", "LEFT");
+
+		$this->db->select("$table_catalog.title as title");
+		$this->db->join($table_catalog, "$table_catalog.id = $this->table.asgmt", "LEFT");
+
+		$this->db->where("(($table.id_user_to = $user_id) OR ($table.id_user_from = $user_id))");
+		$this->db->order_by("$table.ad", 'desc');
+
+		$query = $this->db->get($table);
+		return $query->result();
+
+	}
+
+
 	function getChecksTo($user_id){
 		$this->db->select('*');
 		$this->db->select('date_format(ad, \'%d.%m.%Y\') AS date',FALSE);

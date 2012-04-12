@@ -9,7 +9,7 @@
 			<td width="220" valign="top">
 				<table cellspacing="0" cellpadding="0">
 				<tr><td colspan="2"><span style="color:#ff921e;float:left"><i><b><?=$c->status_name?></b></i></span></td></tr>
-				<tr><td colspan="2"><a href="/ppage/my_bussines/one_predl/<?=$c->id?>"><div class="image"><?if(!empty($c->prevue)){?><img class="image" src="/image/<?=$c->prevue?>.jpg"><?}?></div></a></td></tr>
+				<tr><td colspan="2"><a href="/ppage/my_bussines/one_<?=$c->type?>/<?=$c->id?>"><div class="image"><?if(!empty($c->prevue)){?><img class="image" src="/image/<?=$c->prevue?>.jpg"><?}?></div></a></td></tr>
 				<tr><td  colspan="2" align="center"><span>
 				<b><?=$c->cost?></b> <i>info</i> <?if(!empty($c->price_cash)&&$c->price_cash>0){?>&nbsp;<b><?=$c->price_cash?></b> <?=$c->valuta_name?><?}?></span></td></tr>
 				</table>

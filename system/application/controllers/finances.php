@@ -44,7 +44,8 @@ class finances extends Base
 	
 	function balance(){
 		$content['User'] = $this->auth_model->getUser($this->data['auth']['login']);
-		$content['Orders']=$this->checks_model->getUserChecks($content['User']->id);
+		//$content['Orders']=$this->checks_model->getUserChecks($content['User']->id);
+		$content['Orders']=$this->checks_model->getUserTransactions($content['User']->id);
 		//$content='';
 		$this->data['Content']['text'].= $this->load->view($this->data['papka'].'/ppage/balance', $content, TRUE);
 		$this->load->view('pagesites', $this->data);
@@ -86,7 +87,9 @@ class finances extends Base
 
 			$u_table = $this->auth_model->getval('table');
 			$u_id = $this->auth_model->getval('id');
+			$u_nickname = $this->auth_model->getval('nickname');
 			$table_catalog = $this->catalog_model->getval('table_catalog');
+			$this->db->select("$table_catalog.*, $u_table.$u_nickname AS nickname");
 			$this->db->join($u_table, "$u_table.$u_id  = user", "LEFT");
 			$content['Cat'] = $this->config_model->row($table_catalog, array($table_catalog.'.id'=>$content['Order']->asgmt));
 			//$content['Cat'] = $this->catalog_model->Get(array($this->catalog_model->getval('table_catalog').'.id'=>$content['Order']->asgmt));
