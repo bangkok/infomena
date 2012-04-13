@@ -36,18 +36,16 @@
 
 $active_group = "default";
 
-if ($_SERVER['HTTP_HOST'] == 'www.infomena.loc'){
-        $db['default']['hostname'] = "localhost";
-        $db['default']['username'] = "root";
-        $db['default']['password'] = "vertrigo";
-        $db['default']['database'] = "infomena";
-         }
-else	{
-	$db['default']['hostname'] = "localhost";  
-	$db['default']['username'] = "infomena1";
-        $db['default']['password'] = 'wslkPrgAwslkPrgAwslkPrgA';
-        $db['default']['database'] = "infomena";
-      
+if (str_replace(array('http://', 'www.'), '', $_SERVER['HTTP_HOST']) == 'infomena.loc'){
+    $db['default']['hostname'] = "localhost";
+    $db['default']['username'] = "root";
+    $db['default']['password'] = "vertrigo";
+    $db['default']['database'] = "infomena";
+} else {
+    $db['default']['hostname'] = "localhost";
+    $db['default']['username'] = "infomena1";
+    $db['default']['password'] = 'wslkPrgAwslkPrgAwslkPrgA';
+    $db['default']['database'] = "infomena";
 }
 
 $db['default']['dbdriver'] = "mysql";
