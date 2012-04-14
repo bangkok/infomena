@@ -42,10 +42,10 @@ if (str_replace(array('http://', 'www.'), '', $_SERVER['HTTP_HOST']) == 'infomen
     $db['default']['password'] = "vertrigo";
     $db['default']['database'] = "infomena";
 } else {
-    $db['default']['hostname'] = "localhost";
-    $db['default']['username'] = "infomena1";
-    $db['default']['password'] = 'wslkPrgAwslkPrgAwslkPrgA';
-    $db['default']['database'] = "infomena";
+	$db['default']['hostname'] = "localhost";
+	$db['default']['username'] = "origamir_infomen";
+	$db['default']['password'] = '@JNTa0}wX)WZ';
+	$db['default']['database'] = "origamir_infomena";
 }
 
 $db['default']['dbdriver'] = "mysql";
