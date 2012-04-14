@@ -57,7 +57,7 @@ function valuta(){
 	$curse2 = $this->config_model->table('cur_exchange',array('to'=>$valuta2));
 	
 	
-	echo round($val * $curse1[0]->koef/$curse2[0]->koef);
+	echo round($val * $curse1[0]->koef/$curse2[0]->koef, 2);
 }
 function curs($id=0){
 	$id = $this->uri->segment(3);

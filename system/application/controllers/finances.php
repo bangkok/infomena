@@ -16,9 +16,8 @@ class finances extends Base
 
 		
 		$this->fields=$this->config_model->fields();
-		$this->data['BussinesMenu'] = $this->config_model->getMenuByMarker('my_finances_menu');
-		$this->data['BussinesMenu'] = $this->load->view('block/bussinesmenu.php', $this->data, true);
-		$this->data['Content']['text'] = $this->data['BussinesMenu'];
+//TODO: BussinesMenu нужно выводить не как часть ['Content']['text'] а отдельным блоком
+		$this -> setMenu();
 		$this->comis = 1+($this->config_model->getConfigName('comis',$this->data['lang']) / 100);
 	}
 	
@@ -40,6 +39,13 @@ class finances extends Base
        //header("Location: /about");
 		
 		$this->load->view('pagesites', $this->data);
+	}
+
+	function setMenu()
+	{
+		$this->data['BussinesMenu'] = $this->config_model->getMenuByMarker('my_finances_menu');
+		$this->data['BussinesMenu'] = $this->load->view('block/bussinesmenu.php', $this->data, true);
+		$this->data['Content']['text'] = $this->data['BussinesMenu'];
 	}
 	
 	function balance(){
@@ -106,28 +112,41 @@ class finances extends Base
 	
 	function pay_order($id=0){
 		$id=$this->uri->segment(4);
+
 		
 		if(!empty($_POST) && $checkid = $this->input->post('checkid')){
 			$Order = $this->checks_model->getIdCheck($checkid);
-			if($Order->confirmed == 0){
-				if($Order->info >0)
-				$this->purses_model->f1($Order->id_user_to, $Order->id_user_from, $Order->info, 'order', $Order->id);
-				if($Order->comis >0){
+			if( $Order->confirmed == 0 ){
+				if( $Order->info >0 ){
+					$this->purses_model->f1($Order->id_user_to, $Order->id_user_from, $Order->info, 'order', $Order->id);
+				}
+				if( $Order->comis >0 ){
 					$this->load->model('comunity_model');
 					$this->data['UserNet'] = $this->comunity_model->MyNetwork($Order->id_user_to);
-					$this->purses_model->comis($Order->id_user_to, $Order->comis);
+					$this->purses_model->comis($Order->id_user_to, $Order->comis, $Order->id);
 				}
 					//$this->purses_model->f1($Order->id_user_to, $this->purses_model->getval('InfomenaId'), $Order->comis, 'comis');
 				$this->checks_model->confirmed($checkid);
 				
 				$this->auth_model->rating($Order->id_user_from, 'bue');
 				$this->auth_model->rating($Order->id_user_to, 'sale');
+
+				// Обновляем данные на странице после оплаты счета
+				$content['User'] = $this->auth_model->getUser($this->data['auth']['login']);
+				$this->data['auth']['info'] = $content['User']->info;
+				//$this->db_session->unset_userdata('auth');
+				$this->db_session->set_userdata('auth',$this->data['auth']);
+
+				$this->lang->load('message',$this->data['lang']);
+				$content['block_message'] = $this->lang->line('paid_order');
+				$this -> load -> model('counter_model');
+				$this -> counter_model -> cntChecksTo();
+				$this -> counter_model -> fillMenuOfCnt();
+				$this -> setMenu();
+				//$this -> counter_model -> setCntIntoMenu(TRUE);
 			}
-		$content['User'] = $this->auth_model->getUser($this->data['auth']['login']);
-		$this->data['auth']['info'] = $content['User']->info;
-		//$this->db_session->unset_userdata('auth');
-	  	$this->db_session->set_userdata('auth',$this->data['auth']);
 		}
+
 		//print_r($this->data['auth']);
 		//echo $id;
 		$content['Valuta'] = $this->catalog_model->getValutes();

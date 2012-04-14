@@ -8,10 +8,9 @@
 <div style="text-align:left">
 <p></p>
 <?if(!empty($Order)):?>
-<b>Счет № <?=$Order->id/*inum*/?> от <?=$Order->date?></b>
+<b>Счет № <?=$Order->id?> от <?=$Order->date?></b> <?if($Order->confirmed){?>Оплачен<?}else{?>Не оплачен<?}?>
 <?else:?>
-Выписать счет:
-<b>Счет <!--№ <?=$INum?>--> от <?=date("d.m.Y")?></b>
+Выписать счет: <b>Счет от <?=date("d.m.Y")?></b>
 <?endif;?>
 <div style="height: 20px"></div>
 <form  id="check" name="check" method="POST" >

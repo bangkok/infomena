@@ -7,9 +7,10 @@
 <div style="text-align:left">
 <p></p>
 <?if(!empty($Order) && !$Order->confirmed):?>
-Оплатить счет:
+Оплатить <b>Счет № <?=$Order->id?> от <?=$Order->date?></b>
+<?else:?>
+<b>Счет № <?=$Order->id?> от <?=$Order->date?></b> Оплачен
 <?endif;?>
-<b>Счет № <?=$Order->id/*inum*/?> от <?=$Order->date?></b>
 <div style="height: 20px"></div>
 <form  id="check" name="check" method="POST">
 <input type="hidden" name="checkid" value="<?=$Order->id?>">

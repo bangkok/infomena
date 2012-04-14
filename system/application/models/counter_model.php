@@ -28,9 +28,9 @@ function __construct()
 	}
 }
 
-function setCntIntoMenu()
+function setCntIntoMenu($do_recount = FALSE)
 {
-	if( empty($this -> cnt) && !empty($this -> user_id) ) {
+	if( ($do_recount or empty($this -> cnt)) and !empty($this -> user_id) ) {
 
 		$this -> cntLots();
 

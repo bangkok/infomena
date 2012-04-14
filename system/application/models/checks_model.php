@@ -165,6 +165,7 @@ class Checks_model extends Model
 	}
 	function cntChecksTo($user_id){
 		$this->db->where('id_user_to',$user_id);
+		$this->db->where('confirmed !=', 1);
 		return  $this->db->count_all_results($this->table);
 	}
 	

@@ -18,7 +18,8 @@ table.balance td{padding:10px}
 	'addfriend'	=> 'Приглашение',
 	'spros5'	=> 'Спрос',
 	'predl5'	=> 'Предложение',
-	'order'		=> array('Покупка', 'Продажа')
+	'order'		=> array('Покупка', 'Продажа'),
+	'comis'		=> 'Комиссия'
 )?>
 <?$i=0;$sum=0;
 foreach ($Orders as $order):?>

@@ -61,7 +61,7 @@ class Purses_model extends Model
   	
   	return true;
   }
-  function comis($id_user, $comis){
+  function comis($id_user, $comis, $order_id=0){
 
   	$to_infomena = $comis * 0.4;
   	$to_parent = $comis * 0.4;
@@ -69,15 +69,15 @@ class Purses_model extends Model
   	$to_fond = $comis * 0.1;
   	
   	//$mynet = $this->comunity_model->MyNetwork($id_user);
-  	echo $mynet = $this->data['UserNet'];
-  	$this->f1($id_user, $this->purses_model->getval('InfomenaId'), $to_infomena, 'comis');
+  	$mynet = $this->data['UserNet'];
+  	$this->f1($id_user, $this->purses_model->getval('InfomenaId'), $to_infomena, 'comis', $order_id);
   	if(!empty($mynet['parent']))
-  		$this->f1($id_user, $mynet['parent']['id'], $to_parent, 'comis');
+  		$this->f1($id_user, $mynet['parent']['id'], $to_parent, 'comis', $order_id);
   	if(!empty($mynet['parent']['parent']))
-  		$this->f1($id_user, $mynet['parent']['parent']['id'], $to_parent_parent, 'comis');
-  	else $this->f1($id_user, $this->purses_model->getval('InfomenaId'), $to_parent_parent, 'comis');
+  		$this->f1($id_user, $mynet['parent']['parent']['id'], $to_parent_parent, 'comis', $order_id);
+  	else $this->f1($id_user, $this->purses_model->getval('InfomenaId'), $to_parent_parent, 'comis', $order_id);
   	
-  	$this->f1($id_user, $this->purses_model->getval('FondId'), $to_fond, 'comis');
+  	$this->f1($id_user, $this->purses_model->getval('FondId'), $to_fond, 'comis', $order_id);
   }
   
   function getUserPurseId($user_id){
