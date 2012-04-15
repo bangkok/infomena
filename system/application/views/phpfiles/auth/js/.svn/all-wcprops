@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js
+END
+logout.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/logout.php
+END
+authed.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/authed.php
+END
+authedRedirect.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/authedRedirect.php
+END
+forgot.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/forgot.php
+END
+auth.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/auth.php
+END
+logouted.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/logouted.php
+END
+register.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/register.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/zebra/!svn/ver/622/snooker/system/application/site/views/auth/js/login.php
+END
